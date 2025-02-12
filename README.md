@@ -18,6 +18,7 @@ pasa  2.5.2
 augustus  3.5.0
 perl  5.32.1
 evidencemodeler  2.1.0
+glimmerhmm  3.0.4
 
 ##
 To ensure compatibility and stability of the project, the following environment configurations are recommended:
