@@ -7,7 +7,7 @@ For homologous prediction, this method selects protein sequence sets from the Or
 
 Finally, EvidenceModeler integrates all the evidence (including ab initio predictions, transcriptomic evidence, and homologous protein evidence) to generate the final gene model. PASA is further used to process and filter these gene models, performing untranslated region (UTR) annotation and alternative splicing annotation to ensure that the final integrated gene set is of high quality. The accuracy of the pipeline is validated by manually curating immune-related gene annotations in the pig genome, especially genes related to the major histocompatibility complex (MHC), such as the swine leukocyte antigen (SLA).
 
-##  software version
+##  Software version
 Hisat2-build  2.2.1；
 Python2  2.7.5；
 Transdecoder  5.7.1；
