@@ -5,7 +5,6 @@ queue = q_all
 transdecoder = Anaconda3/envs/ann/opt/transdecoder
 stringtie = Anaconda3/envs/ann/bin/stringtie
 gffread = Anaconda3/envs/ann/bin/gffread
-pasa = Anaconda3/envs/ann/opt/pasa-2.5.2
 augustus = Anaconda3/envs/ann/bin/augustus
 bam2hints = Anaconda3/envs/ann/bin/bam2hints
 augustus_extrinsic = Anaconda3/envs/ann/config/extrinsic/extrinsic.M.RM.E.W.cfg
