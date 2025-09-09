@@ -278,3 +278,8 @@ These annotation files collectively provide comprehensive data support for the r
 - **Software version conflicts**: Use an isolated Conda environment.
 - **Path issues**: All paths in configuration files must be absolute paths.
 - **Large dataset acceleration**: Use a Slurm cluster to improve efficiency.
+## Software version
+Hisat2-build 2.2.1； Python2 2.7.5； Transdecoder 5.7.1； Stringtie 2.2.3； Gffread 0.12.7； Pasa 2.5.2； Augustus 3.5.0； Perl 5.32.1； Evidencemodeler 2.1.0； Glimmerhmm 3.0.4。
+
+To ensure compatibility and stability of the project, the following environment configurations are recommended:
+Recommended Python Version: Python 3.12.0 Recommended Operating System: CentOS 7
