@@ -23,9 +23,9 @@ HACGA1工具的开发逻辑首先从基因组数据的预处理开始，通过sp
 
 最后，EvidenceModler（EVM）将上述所有证据（包括从头预测、转录组证据和同源蛋白证据）按照不同权重值进行整合，生成最终的基因模型。使用PASA进一步处理和过滤这些基因模型，进行UTR注释和可变剪切注释，以确保整合得到的最终基因集具有高完整性。
 
-<img src="C:\Users\liqia\AppData\Roaming\Typora\typora-user-images\image-20250908111201374.png" alt="image-20250908111201374" />
+<img src="pic/pic1.png" alt="pic1" />
 
-**图****1** **HACGA1** **结构注释流程示意图**
+**图1 HACGA1 结构注释流程示意图**
 
 ---
 
@@ -191,55 +191,55 @@ python /pipline/annotation_gene/ann_gene.py \
 
 在软件运行的过程中，系统会根据设定的顺序自动创建多个目录，包括 01RNAdenovo、02trinity_pasa、03augustus、04genemarket、05genemarkep、06glimmerhmm、07evm和08evm_pasa，并在每个目录下自动执行相应的计算任务
 
-![img](file:///C:\Users\liqia\AppData\Local\Temp\ksohtml66208\wps2.jpg)![img](file:///C:\Users\liqia\AppData\Local\Temp\ksohtml66208\wps3.jpg) 
+![img](pic/pic2_1.jpg) ![img](pic/pic2_2.jpg) 
 
-**图****2** **软件计算和输出结果目录**
+**图2 软件计算和输出结果目录**
 
 在01RNAdenovo文件夹中将自动产生01_index、02_hisat2和03_stringtie文件夹，在这些文件中分别进行参考基因组索引准备、序列比对以及转录本组装和注释。StringTie组装产生转录本结构注释文件（merge.stringtie.assemble.gtf）以及序列文件（transcripts.fasta）。最终以获取到的RNADenovo.gff文件为最终的基于转录组数据组装得到的转录本注释文件（图3）。
 
-![img](file:///C:\Users\liqia\AppData\Local\Temp\ksohtml66208\wps4.jpg) 
+![img](pic/pic3.jpg) 
 
-**图3 RNADenovo.gff****基因组注释文件内容示例**
+**图3 RNADenovo.gff 基因组注释文件内容示例**
 
 在02trinity_pasa文件中，这个目录包含了使用PASA流程进行转录本组装和注释的全套文件，主要分为两个功能模块，第一个是序列比对，主要包括gmap.spliced_alignments.gff3（GMAP比对结果）、minimap2.spliced_alignments.gff3（Minimap2比对结果）以及blat.spliced_alignments.gff3（BLAT比对结果）。第二个是组装的核心输出文件，主要包括pasa_cotton.assemblies.fasta（组装的转录本序列）、pasa_cotton.pasa_assemblies.gff3/bed/gtf（三种格式的注释文件）以及pasa_cotton.pasa_assemblies_described.txt（组装描述文件）以及TransDecoder预测得到的蛋白序列、CDS序列以及基因组坐标注释类文件。pasa.1.end.gff（图4）为最终利用转录本序列进行基因结构预测的注释文件。
 
-![img](file:///C:\Users\liqia\AppData\Local\Temp\ksohtml66208\wps5.jpg) 
+![img](pic/pic4.jpg) 
 
-**图****4**  **pasa.1.end.gff基因组注释文件内容示例**
+**图4 pasa.1.end.gff 基因组注释文件内容示例**
 
 在03augustus文件夹中，该文件夹包含Augustus基因预测工具的运行文件及训练数据,其核心脚本和输出文件，主要包括hints.gff（整合RNA-seq或同源蛋白等外部证据）、运行脚本如all.shell、hints.gff.sh、augustus.gff.sh以及输出结果：augustus.gff（最终基因预测注释）、augustus.out（原始输出）、stat.out（统计报告）。其中，augustus.gff（图5）为最终通过从头预测生成的基因结构文件。
 
-![img](file:///C:\Users\liqia\AppData\Local\Temp\ksohtml66208\wps6.jpg) 
+![img](pic/pic5.jpg) 
 
-**图****5** **augustus.gff基因组注释文件内容示例**
+**图5 augustus.gff 基因组注释文件内容示例**
 
 04genemarket文件夹存储了GeneMark-ET/ES基因预测流程的完整运行文件和数据，主要用于对应物种蛋白质编码基因的预测与注释。主目录包含核心输入输出文件：intron.gff（内含子预测结果）、run.cfg（参数配置文件）、gmhmm.mod（训练完成的隐马尔可夫模型）以及最终预测结果genemark.gff（基因结构注释）。子目录output用于存储优化后的预测模型gmhmm.mod；info用于记录训练与预测过程的详细日志（如dna.gc.csv统计GC含量、training.trace跟踪模型迭代）；run目录包含分阶段训练的模型文件；data目录提供输入数据，包括基因组序列dna.fna、外部证据et.gff和训练集training.fna。最终，genemarket.gff（图6）作为最终的基于转录组数据的基因结构注释文件。
 
-![img](file:///C:\Users\liqia\AppData\Local\Temp\ksohtml66208\wps7.jpg) 
+![img](pic/pic6.jpg) 
 
-**图****6** **augustus.gff基因组注释文件内容示例**
+**图6 augustus.gff 基因组注释文件内容示例**
 
 05genemarkep，该文件夹存储了GeneMark-ES/EP（基于自训练和外部证据的基因预测工具）的完整分析流程文件。核心文件包括data目录下的基因组序列dna.fna、训练集training.fna，以及外部证据文件（如prothint.gff、ep.gff、plus.gff）；模型训练：run目录包含分阶段训练的隐马尔可夫模型文件；预测结果主目录生成genemark_es.gtf（ES模式预测）和genemarkep.gff（EP模式预测），以及统计报告stat.out；prothint子目录存储同源蛋白比对证据（如diamond.out、spaln.gff），用于提升预测准确性。genemarkep.gff（图7）作为最终根据蛋白参考集生成的基因结构注释文件。
 
-![img](file:///C:\Users\liqia\AppData\Local\Temp\ksohtml66208\wps8.jpg) 
+![img](pic/pic7.jpg) 
 
-**图****7** **genemarkep.gff基因组注释文件内容示例**
+**图7 genemarkep.gff 基因组注释文件内容示例**
 
 在06glimmerhmm中，该文件夹存储了GlimmerHMM基因预测工具的完整运行文件。主目录包含核心运行脚本和结果文件：glimmerhmm.gff.sh、glimmerhmm.out（原始输出）和stat.out（统计报告）。train子目录存放训练数据与模型文件：cds_00.fa和cds_01.fa为训练用编码序列，generate_glimmer_scripts.sh和run.sh控制训练流程；new_00目录存储训练生成的模型文件（如coding_0_40.model和noncoding_40_100.model）和关键参数文件（如exons.dat记录外显子特征，acc/don.errors统计剪接位点错误率，atg/stop.markov标记起始/终止密码子模型）。glimmerhmm.gff（图8）为最终从头预测的基因结构文件。
 
-![img](file:///C:\Users\liqia\AppData\Local\Temp\ksohtml66208\wps9.jpg) 
+![img](pic/pic8.jpg) 
 
-**图****8** **glimmerhmm.gff基因组注释文件内容示例**
+**图8 glimmerhmm.gff 基因组注释文件内容示例**
 
  在07evm文件夹中，存储了EVM基因预测整合流程的完整数据，用于整合多种证据（蛋白比对、转录本、基因预测）生成最终的棉花基因注释。主目录包含核心输入文件：protein_alignments.gff（同源蛋白比对证据）、transcript_alignments.gff（RNA-seq转录本支持）、gene_predictions.gff（Augustus/GeneMark等工具的预测结果），以及控制文件weights.txt（证据权重配置）和commands.sh。运行后生成的分区文件（如group3_1-10000000）按基因组坐标分割证据数据以提高效率，最终输出evm.out.gff3（整合的基因模型）。子目录（如group3/、ptg000162l/）对应不同染色体或scaffold的分区分析，均包含输入证据文件、参考基因组cottons.racon.2.adjust.fa及分区结果。evm.gff3（图9）为最终通过 EVM 软件整合不同预测方法的基因结构文件。
 
-![img](file:///C:\Users\liqia\AppData\Local\Temp\ksohtml66208\wps10.jpg) 
+![img](pic/pic9.jpg) 
 
-**图****9** **evm.gff3基因组注释文件内容示例**
+**图9 evm.gff3 基因组注释文件内容示例**
 
 08evm_pasa文件夹存储了EVM与PASA联合分析的完整流程文件，主要用于整合多源证据生成棉花基因组的高置信度注释。核心文件包括：evm_pasa.end.sh（主控脚本）和alignAssembly.config/annotationCompare.config（PASA配置文件）用以指导证据整合与基因模型更新；输出结果包含PASA修正的基因结构、最优蛋白预测和统计文件protein.best.gff.stat.out/Genes_annotation.statistics.xls（注释质量评估）。表明该流程成功整合了蛋白同源性、转录本比对等证据，最终生成经过PASA验证的可靠基因组注释。protein.best.gff（图10）本流程最终整合的基因注释结果。
 
-![img](file:///C:\Users\liqia\AppData\Local\Temp\ksohtml66208\wps11.jpg) 
+![img](pic/pic10.jpg)  
 
 **图10 protein.best.gff基因组注释文件内容示例**
 
