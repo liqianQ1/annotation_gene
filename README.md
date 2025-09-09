@@ -1,7 +1,5 @@
 # 🧬HACGA1 Software Documentation
 
-🌐 [English](README.md) | [简体中文](README_zh.md)
-
 The HACGA1 software package efficiently integrates various bioinformatics tools through a Python-based pipeline. By utilizing function calls and command-line execution, it automates the entire workflow from data preprocessing to genome annotation
 
 This manual contains the following contents:
