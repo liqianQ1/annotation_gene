@@ -24,7 +24,7 @@ Finally, EvidenceModeler (EVM) integrates all the aforementioned evidence (inclu
 <img src="pic/pic1.png" alt="pic1" />
 
 <figure style="text-align: center;">
-  <figcaption>Figure 1. Schematic diagram of the HACGA1 structural annotation pipeline</figcaption>
+  <figcaption><strong>Figure 1. Schematic diagram of the HACGA1 structural annotation pipeline</strong></figcaption>
 </figure>
 
 ------
@@ -200,7 +200,7 @@ During the execution of the pipeline, the system automatically creates multiple 
 ![img](pic/pic2_1.jpg) ![img](pic/pic2_2.jpg) 
 
  <figure style="text-align: center;">
-  <figcaption>Figure 2. Software calculations and output result catalog</figcaption>
+  <figcaption><strong>Figure 2. Software calculations and output result catalog</strong></figcaption>
 </figure>
 
 In the 01RNAdenovo directory, the subdirectories 01_index, 02_hisat2, and 03_stringtie are automatically generated. These correspond to the steps of reference genome indexing preparation, sequence alignment, and transcript assembly and annotation, respectively. StringTie2 generates a transcript structure annotation file (merge.stringtie.assemble.gtf) and a sequence file (transcripts.fasta). The final output, RNADenovo.gff, serves as the transcript annotation file derived from RNA-seq-based assembly ( Figure 3).
@@ -208,7 +208,7 @@ In the 01RNAdenovo directory, the subdirectories 01_index, 02_hisat2, an
 ![img](pic/pic3.jpg) 
 
   <figure style="text-align: center;">
-  <figcaption>Figure 3. Example content of the RNADenovo.gff genome annotation file</figcaption>
+  <figcaption><strong>Figure 3. Example content of the RNADenovo.gff genome annotation file</strong></figcaption>
 </figure>
 
 The 02trinity_pasa directory contains the complete set of files for transcript assembly and annotation using the PASA pipeline. The workflow is divided into two main functional modules. The first module handles sequence alignment and includes the following files: gmap.spliced_alignments.gff3 (results from GMAP), minimap2.spliced_alignments.gff3 (results from Minimap2), and blat.spliced_alignments.gff3 (results from BLAT).The second module comprises the core output files from the assembly process, which consist of: pasa_cotton.assemblies.fasta (assembled transcript sequences), pasa_cotton.pasa_assemblies.gff3/bed/gtf (annotation files in three formats), pasa_cotton.pasa_assemblies_described.txt (assembly description file), as well as protein sequences, CDS sequences, and genomic coordinate annotation files predicted by TransDecoder. The final annotation file pasa.1.end.gff (Fig. 4) represents the predicted gene structures based on the assembled transcript sequences.
@@ -216,7 +216,7 @@ The 02trinity_pasa directory contains the complete set of files for transcript a
 ![img](pic/pic4.jpg) 
 
  <figure style="text-align: center;">
-  <figcaption>Figure 4. Example content of the pasa.1.end.gff genome annotation file</figcaption>
+  <figcaption><strong>Figure 4. Example content of the pasa.1.end.gff genome annotation file</strong></figcaption>
 </figure>
 
 The 03augustus directory contains the runtime files and training data for the Augustus gene prediction tool, along with its core scripts and output files. Key components include: hints.gff (incorporating external evidence such as RNA-seq or homologous protein alignments), execution scripts such as all.shell, hints.gff.sh, and augustus.gff.sh, as well as output results: augustus.gff (final gene prediction annotations), augustus.out (raw output), and stat.out (statistical report). Among these, augustus.gff (Fig. 5) represents the final de novo predicted gene structures.
@@ -224,7 +224,7 @@ The 03augustus directory contains the runtime files and training data for the Au
 ![img](pic/pic5.jpg) 
 
  <figure style="text-align: center;">
-  <figcaption>Figure 5. Example content of the augustus.gff genome annotation file</figcaption>
+  <figcaption><strong>Figure 5. Example content of the augustus.gff genome annotation file</strong></figcaption>
 </figure>
 
 The folder "04genemarket" contains the complete set of executable files and data for the GeneMark-ET/ES gene prediction pipeline, which is primarily used to predict and annotate protein-coding genes in the target species. The main directory includes core input and output files: intron.gff (intron prediction results), run.cfg (parameter configuration file), gmhmm.mod (the trained Hidden Markov Model), and the final prediction output genemark.gff (annotated gene structures). The subdirectory output stores the optimized prediction model gmhmm.mod; the info subdirectory records detailed logs of the training and prediction processes (e.g., dna.gc.csv for GC content statistics, training.trace for tracking model iterations); the run subdirectory contains model files from stage-specific training steps; and the data subdirectory provides input data, including the genome sequence dna.fna, external evidence et.gff, and the training set training.fna. Ultimately, genemarket.gff (Fig. 6) serves as the final transcriptome-based annotation file for gene structures.
@@ -232,7 +232,7 @@ The folder "04genemarket" contains the complete set of executable files and data
 ![img](pic/pic6.jpg) 
 
  <figure style="text-align: center;">
-  <figcaption>Figure 6. Example content of the augustus.gff genome annotation file</figcaption>
+  <figcaption><strong>Figure 6. Example content of the augustus.gff genome annotation file</strong></figcaption>
 </figure>
 
 The folder "05genemarkep" contains the complete analysis pipeline files for GeneMark-ES/EP, a gene prediction tool that utilizes self-training and external evidence. Key components include the genome sequence (dna.fna), the training set (training.fna), and external evidence files (such as prothint.gff, ep.gff, and plus.gff) located in the data subdirectory. Model training files, including stage-specific Hidden Markov Model files, are stored in the run subdirectory. The main directory contains prediction outputs: genemark_es.gtf (prediction in ES mode) and genemarkep.gff (prediction in EP mode), along with the statistical report stat.out. The prothint subdirectory stores homologous protein alignment evidence (e.g., diamond.out, spaln.gff) used to enhance prediction accuracy. The file genemarkep.gff (Fig. 7) serves as the final gene structure annotation file generated based on the protein reference set.
@@ -240,7 +240,7 @@ The folder "05genemarkep" contains the complete analysis pipeline files for Gene
 ![img](pic/pic7.jpg) 
 
   <figure style="text-align: center;">
-  <figcaption>Figure 7. Example content of the genemarkep.gff genome annotation file </figcaption>
+  <figcaption><strong>Figure 7. Example content of the genemarkep.gff genome annotation file </strong></figcaption>
 </figure>
 
 The folder "06glimmerhmm" contains the complete set of running files for the gene prediction tool GlimmerHMM. The main directory includes core scripts and result files: glimmerhmm.gff.sh, glimmerhmm.out (raw output), and stat.out (statistical report). The train subdirectory contains training data and model files: cds_00.fa and cds_01.fa serve as coding sequences for training, while generate_glimmer_scripts.sh and run.sh control the training workflow. The new_00 subdirectory stores model files generated during training (e.g., coding_0_40.model and noncoding_40_100.model), as well as key parameter files such as exons.dat (recording exon features), acc/don.errors (documenting splice site error rates), and atg/stop.markov (Modeling start and stop codon sequences). The file glimmerhmm.gff (Fig. 8) represents the final de novo predicted gene structures.
@@ -248,7 +248,7 @@ The folder "06glimmerhmm" contains the complete set of running files for the gen
 ![img](pic/pic8.jpg) 
 
   <figure style="text-align: center;">
-  <figcaption>Figure 8. Example content of the glimmerhmm.gff genome annotation file </figcaption>
+  <figcaption><strong>Figure 8. Example content of the glimmerhmm.gff genome annotation file </strong></figcaption>
 </figure>
 
 The folder "07evm" contains the complete dataset for the EVM gene prediction integration pipeline, which combines multiple lines of evidence (including Protein alignment, transcript, gene prediction) to generate the final gene annotation for cotton. The main directory includes core input files: protein_alignments.gff (homology-based protein alignment evidence), transcript_alignments.gff (RNA-seq transcript alignments), gene_predictions.gff (predictions from tools such as Augustus and GeneMark), along with the configuration file weights.txt (evidence weighting parameters) and the script commands.sh. During execution, the evidence data are partitioned by genomic coordinates into segments (e.g., group3_1-10000000) to improve computational efficiency. The final integrated gene models are output as evm.out.gff3. Subdirectories (e.g., group3/ and ptg000162l/) correspond to analyses for specific chromosomes or scaffolds, each containing input evidence files, the reference genome sequence (cottons.racon.2.adjust.fa), and partitioned results. The file evm.gff3 (Fig. 9) represents the final consensus gene structures integrated by EVM from multiple prediction sources.
@@ -256,7 +256,7 @@ The folder "07evm" contains the complete dataset for the EVM gene prediction int
 ![img](pic/pic9.jpg) 
 
   <figure style="text-align: center;">
-  <figcaption>Figure 9. Example content of the evm.gff3 genome annotation file</figcaption>
+  <figcaption><strong>Figure 9. Example content of the evm.gff3 genome annotation file</strong></figcaption>
 </figure>
 
 The folder "08evm_pasa" contains the complete workflow files for the integrated analysis using EVM and PASA, aimed at generating high-confidence annotations for the cotton genome by combining multiple sources of evidence. Key files include: evm_pasa.end.sh (the main control script) and the PASA configuration files (alignAssembly.config and annotationCompare.config), which guide evidence integration and gene model refinement. Outputs comprise PASA-corrected gene structures, optimal protein predictions, and statistical reports such as protein.best.gff.stat.out and Genes_annotation.statistics.xls (for annotation quality assessment). This workflow successfully integrates protein homology, transcript alignments, and other evidence to produce a reliable genome annotation validated by PASA. The file protein.best.gff (Fig. 10) represents the final integrated gene annotation generated by this process.
@@ -264,7 +264,7 @@ The folder "08evm_pasa" contains the complete workflow files for the integrated 
 ![img](pic/pic10.jpg) 
 
    <figure style="text-align: center;">
-  <figcaption>Figure 10. Example content of the protein.best.gff genome annotation file</figcaption>
+  <figcaption><strong>Figure 10. Example content of the protein.best.gff genome annotation file</strong></figcaption>
 </figure>
 
 These annotation files collectively provide comprehensive data support for the refinement and validation of gene structures.
