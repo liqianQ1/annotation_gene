@@ -2,6 +2,13 @@
 
 The HACGA1 software package efficiently integrates various bioinformatics tools through a Python-based pipeline. By utilizing function calls and command-line execution, it automates the entire workflow from data preprocessing to genome annotation
 
+**Author Information**  
+
+- **Qiqi Liang*** (First Author, Corresponding Author of the related manuscript)  
+- Additional authors will be added later.
+
+---
+
 This manual contains the following contents:
 
 - **Principle Explanation** : Provide a detailed introduction to the design concept, working mechanism, and application principle of HACGA1 in genomic annotation.
