@@ -4,7 +4,7 @@ The HACGA1 software package efficiently integrates various bioinformatics tools 
 
 **Author Information**  
 
-- **Qiqi Liang*** (First Author, Corresponding Author of the related manuscript)  
+- **Qiqi Liang** (First Author, Corresponding Author of the related manuscript)  
 - Additional authors will be added later.
 
 ---
